@@ -1,13 +1,20 @@
 import CuriosityIntro from "./curiosity-scroll";
+import JoinViewportStability from "./join-viewport-stability";
 import LayerStack from "./layer-stack";
 
 export default function HomePage() {
   return (
-    // overflow-x-hidden breaks position:sticky — keep it off this main
-    <main className="relative w-full bg-[#E5FF00] text-[#E5FF00]">
+    <main className="join-v1-page relative w-full overflow-clip bg-[#E5FF00] text-[#E5FF00]">
+      <JoinViewportStability />
       <CuriosityIntro />
-      {/* Whole stack pulled up so WHO ARE WE FOR covers the sticky intro sooner */}
-      <div className="relative z-10 -mt-[55vh] -mb-[min(30vh,18rem)]">
+      <div
+        className="relative z-10"
+        style={{
+          marginTop: "calc(var(--join-v1-viewport-height, 100svh) * -0.55)",
+          marginBottom:
+            "max(-18rem, calc(var(--join-v1-viewport-height, 100svh) * -0.3))",
+        }}
+      >
         <LayerStack />
       </div>
     </main>

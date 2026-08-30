@@ -6,15 +6,13 @@ const LINKS = [
   { label: "Substack", href: "https://v1network.substack.com/" },
 ] as const;
 
-export default function JoinFooter({ className = "" }: { className?: string }) {
+export default function JoinSocialBar() {
   return (
-    <footer
-      className={`relative z-20 w-full bg-black px-4 py-7 sm:px-6 sm:py-8 ${className}`}
+    <aside
+      aria-label="V1 social links"
+      className="relative z-20 w-full bg-black px-4 pb-[calc(1.75rem+env(safe-area-inset-bottom))] pt-7 sm:px-6 sm:pb-[calc(2rem+env(safe-area-inset-bottom))] sm:pt-8"
     >
-      <nav
-        aria-label="V1 social links"
-        className="mx-auto flex max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2.5"
-      >
+      <nav className="mx-auto flex max-w-lg flex-wrap items-center justify-center gap-x-4 gap-y-2.5">
         {LINKS.map(({ label, href }) => (
           <a
             key={label}
@@ -27,6 +25,6 @@ export default function JoinFooter({ className = "" }: { className?: string }) {
           </a>
         ))}
       </nav>
-    </footer>
+    </aside>
   );
 }
